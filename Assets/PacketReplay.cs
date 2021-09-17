@@ -77,6 +77,8 @@ public class PacketReplay : MonoBehaviour
                     System.Threading.Thread.Sleep(1000 * (int)(message.time - now));*/
                 udp_.Send(message.buffer, message.buffer.Length);
                 count++;
+                if (stop)
+                    break;
             }
         }
         stop = false;

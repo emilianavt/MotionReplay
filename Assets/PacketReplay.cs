@@ -14,6 +14,7 @@ namespace uOSC
 public class PacketReplay : MonoBehaviour
 {
     public Text text;
+    public bool stop = false;
     private const int BufferSize = 8192;
 
     [SerializeField]
@@ -52,6 +53,10 @@ public class PacketReplay : MonoBehaviour
     {
         OnDestroy();
     }
+    
+    public void StopSending() {
+        stop = true;
+    }
 
     void UpdateSend()
     {
@@ -62,16 +67,19 @@ public class PacketReplay : MonoBehaviour
         udp_.StartClient(address, port);
         count = 0;
         double start = MonotonicTimestamp.Now().Seconds();
-        foreach (var message in messages) {
-            double now;
-            do {
-                now = MonotonicTimestamp.Now().Seconds() - start;
-            } while (now < message.time);
-            /*if (now < message.time)
-                System.Threading.Thread.Sleep(1000 * (int)(message.time - now));*/
-            udp_.Send(message.buffer, message.buffer.Length);
-            count++;
+        while (!stop) {
+            foreach (var message in messages) {
+                double now;
+                do {
+                    now = MonotonicTimestamp.Now().Seconds() - start;
+                } while (now < message.time);
+                /*if (now < message.time)
+                    System.Threading.Thread.Sleep(1000 * (int)(message.time - now));*/
+                udp_.Send(message.buffer, message.buffer.Length);
+                count++;
+            }
         }
+        stop = false;
         udp_.Stop();
         thread_.Stop();
     }

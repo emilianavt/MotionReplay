@@ -58,8 +58,8 @@ namespace Baku.VMagicMirrorConfig
         {
             if (IPAddress.TryParse(ipAddress, out var address))
             {
-                var data = Encoding.UTF8.GetBytes("iFacialMocap_sahuasouryya9218sauhuiayeta91555dy3719");
-                _udpClient.Send(data, data.Length, new IPEndPoint(address, 49983));
+                var data = Encoding.UTF8.GetBytes("FACEMOTION3D_OtherStreaming");
+                _udpClient.Send(data, data.Length, new IPEndPoint(address, 49993));
                 return true;
             }
             return false;

@@ -1443,7 +1443,7 @@ MonoBehaviour:
   text: {fileID: 1957083639}
   stop: 0
   address: 127.0.0.1
-  port: 49986
+  port: 49983
 --- !u!1 &1328452532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,7 +2512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1957083639}
-  port: 49986
+  port: 49983
 --- !u!4 &2025320744
 Transform:
   m_ObjectHideFlags: 0
@@ -2662,7 +2662,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Connect iFacialMocap
+  m_Text: Connect FaceMotion3D
 --- !u!222 &2123239712
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -66,8 +66,8 @@ public class PacketReplay : MonoBehaviour
         List<ReceivedMessage> messages = JsonConvert.DeserializeObject<List<ReceivedMessage>>(json);
         udp_.StartClient(address, port);
         count = 0;
-        double start = MonotonicTimestamp.Now().Seconds();
         while (!stop) {
+            double start = MonotonicTimestamp.Now().Seconds();
             foreach (var message in messages) {
                 double now;
                 do {
